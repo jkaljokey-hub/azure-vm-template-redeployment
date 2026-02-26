@@ -1,0 +1,24 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "existingOsDiskId": {
+      "value": "/subscriptions/c516e71f-6d47-4e41-896d-44295e620ec3/resourceGroups/MY-GROUP/providers/Microsoft.Compute/disks/vm-pro_OsDisk_1_7547f5e672824d3fac75ed0fce6863bf"
+    },
+    "virtualMachines_vm_pro_name": {
+      "value": "vm-pro"
+    },
+    "networkInterfaces_vm_pro516_name": {
+      "value": "vm-pro516"
+    },
+    "publicIPAddresses_vm_pro_ip_name": {
+      "value": "vm-pro-ip"
+    },
+    "networkSecurityGroups_vm_pro_nsg_name": {
+      "value": "vm-pro-nsg"
+    },
+    "virtualNetworks_vnet_westcentralus_1_name": {
+      "value": "vnet-westcentralus-1"
+    }
+  }
+}
