@@ -12,7 +12,7 @@ The goal is to show how Infrastructure‑as‑Code (IaC) can disaster‑recovery
 Architecture covers three deployment Summary
 This project1. Deploy a VM in patterns:
 
-** the same region**
+1.the same region**
 A standard ARMnet
 
 Network Security deployment that creates:
@@ -27,8 +27,8 @@ Virtual Machine IP
 
 Network Interface (from image or existing disk)
 
-**2. different region scenario where:
-Deploy a VM in a**
+2.different region scenario where:
+Deploy a VM in 
 A cross‑region- The OS disk is copied to another region
 
 A new the target region VM is deployed in
@@ -37,7 +37,7 @@ The copied OS as the VM’s OS disk disk is attached
 
 This simulates** or **region migration OS disk to a new a disaster recovery workflow.
 
-3. Attach an existing VM
+3.Attach an existing VM
 This scenario uses:
 
 createOption: Attach
