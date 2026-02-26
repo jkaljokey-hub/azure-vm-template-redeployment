@@ -1,5 +1,4 @@
 # azure-vm-attach-osdisk
-Overview
 This project to deploy Azure using ARM templates demonstrates how Virtual Machines:
 
 Deploying a region**
