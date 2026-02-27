@@ -1,49 +1,72 @@
-# azure-vm-attach-osdisk
-This project to deploy Azure using ARM templates demonstrates how Virtual Machines:
+azure-vm-template-redeployment
+This project demonstrates how to deploy Azure Virtual Machines using both Bicep and ARM templates, including two deployment scenarios:
 
-Deploying a region**
+1.Deploy a new VM from an image
+This scenario creates a fresh VM using a marketplace image (Windows or Linux).
+It requires:
 
-Deploy in two scenarios VM in the **samedifferent regioning a VM in a ****
+A NIC
 
-Attaching an existing OS disk to a new VM (specialized VM deployment)
+A VNet/Subnet
 
-The goal is to show how Infrastructure‑as‑Code (IaC) can disaster‑recovery automate VM recovery, migration, and scenarios using Azure Resource Manager (ARM) templates.
+Admin credentials
 
-Architecture covers three deployment Summary
-This project1. Deploy a VM in patterns:
+A VM size available in the selected region
 
-1.the same region**
-A standard ARMnet
+Files:
 
-Network Security deployment that creates:
+main.bicep
 
-Virtual Network
+main.bicepparam
 
-Sub Group
+2.Deploy a VM by attaching an existing OS disk (specialized VM)
+This scenario recreates a VM from an existing managed OS disk.
+Useful for:
 
-Public
+VM recovery
 
-Virtual Machine IP
+VM migration
 
-Network Interface (from image or existing disk)
+Rebuilding a deleted VM
 
-2.different region scenario where:
-Deploy a VM in 
-A cross‑region- The OS disk is copied to another region
+Requirements:
 
-A new the target region VM is deployed in
+The OS disk must be unattached
 
-The copied OS as the VM’s OS disk disk is attached
+The VM size must match the disk’s generation (Gen1/Gen2)
 
-This simulates** or **region migration OS disk to a new a disaster recovery workflow.
+Security type must match (Trusted Launch or Standard)
 
-3.Attach an existing VM
-This scenario uses:
+NIC must be in the same region
 
-createOption: Attach
+Files:
 
-No osProfile
+templateVm.json
 
-No imageReference
+parametersFile.json
 
-This creates a specialized VM an existing OS disk Used
+Deployment Commands
+Bicep:
+bash
+
+az deployment group create \
+  --resource-group <rg> \
+  --template-file main.bicep \
+  --parameters main.bicepparam
+  
+ARM:
+bash
+az deployment group create \
+
+  --resource-group <rg> \
+  --template-file templateVm.json \
+  --parameters parametersFile.json
+
+Notes
+Trusted Launch VMs require Gen2 OS disks.
+
+Standard security VMs require Gen1 OS disks.
+
+A NIC cannot be attached to more than one VM.
+
+A managed OS disk must be unattached before redeployment.
